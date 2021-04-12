@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" id="form">
+        <fieldset>
+            <label for="resistanceInput">Resistance</label>
+            <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResistance()">
+            <output name="resistanceOutput" for="resistanceInput">1</output>
+            <br>
+            <label for="nodeCountInput">Node count</label>
+            <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="4" value="1" oninput="updateNodeCount()">
+            <output name="nodeCountOutput" for="nodeCountInput">1</output>
+            <br>
+            <label for="baseRoll">Base roll:</label>
+            <output name="baseRoll" for="resistanceInput nodeCountInput">3</output>+
+        </fieldset>
+        <fieldset>
+            <label for="ascendancyInput">Ascendancy</label>
+            <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateAscendancy()">
+            <output name="ascendancyOutput" for="ascendancyInput">1</output>
+            <br>
+            <label for="modifier">Modifier</label>
+            <input type="number" name="modifier" id="modifier" value="0" oninput="updateModifier()">
+            <br>
+            <label for="bonus">Bonus:</label>
+            +<output name="bonus" for="ascendancyInput modifier">1</output>
+        </fieldset>
+        <fieldset>
+            <label for="finalRoll">Overall roll:</label>
+            <output name="finalRoll">2</output>+
+        </fieldset>
+    </form>
+</body>
+<script src="main.js"></script>
+</html>
