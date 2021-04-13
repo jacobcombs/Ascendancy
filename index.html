@@ -4,36 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Cultural Hegemony Calculator</title>
 </head>
 <body>
-    <form method="get" id="form">
+    <h1>Hegemony Calculator</h1>
+    <form method="get" id="form" onload="updateResult()">
         <fieldset>
-            <label for="resistanceInput">Resistance</label>
-            <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResistance()">
+            <legend>Their...</legend>
+
+            <label for="resistanceInput">Resistance (or Ascendancy)</label>
+            <br>
+            <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResult()">
             <output name="resistanceOutput" for="resistanceInput">1</output>
             <br>
-            <label for="nodeCountInput">Node count</label>
-            <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="4" value="1" oninput="updateNodeCount()">
-            <output name="nodeCountOutput" for="nodeCountInput">1</output>
+            
+            <label for="nodeCountInput">Nodes in System</label>
             <br>
-            <label for="baseRoll">Base roll:</label>
-            <output name="baseRoll" for="resistanceInput nodeCountInput">3</output>+
+            <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="5" value="4" oninput="updateResult()">
+            <output name="nodeCountOutput">4</output>
+            <br>
+
+            <label for="theirModifier">Modifiers (from Advancements, etc.)</label>
+            <br>
+            <input type="number" name="theirModifier" id="theirModifier" min="0" value="0" oninput="updateResult()">
+            
+            <hr>
+
+            <label for="baseRoll">Anyone would need:</label>
+            <output name="baseRoll">6</output>+
+
+            (probability: <output name="baseOdds">1/6, 17%</output>)
         </fieldset>
         <fieldset>
+            <legend>My...</legend>
+
             <label for="ascendancyInput">Ascendancy</label>
-            <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateAscendancy()">
-            <output name="ascendancyOutput" for="ascendancyInput">1</output>
             <br>
-            <label for="modifier">Modifier</label>
-            <input type="number" name="modifier" id="modifier" value="0" oninput="updateModifier()">
+            <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateResult()">
+            <output name="ascendancyOutput">1</output>
             <br>
-            <label for="bonus">Bonus:</label>
+
+            <label for="myModifier">Modifiers (from Advancements, etc.)</label>
+            <br>
+            <input type="number" name="myModifier" id="myModifier" min="0" value="0" oninput="updateResult()">
+            
+            <hr>
+            
+            <label for="bonus">My bonuses:</label>
             +<output name="bonus" for="ascendancyInput modifier">1</output>
         </fieldset>
         <fieldset>
-            <label for="finalRoll">Overall roll:</label>
-            <output name="finalRoll">2</output>+
+            <legend>Success roll</legend>
+            <output name="finalRoll">5</output>+
+            
+            (probability: <output name="finalOdds">1/3, 33%</output>)
         </fieldset>
     </form>
 </body>
