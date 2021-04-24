@@ -4,60 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
     <title>Cultural Hegemony Calculator</title>
 </head>
 <body>
-    <h1>Hegemony Calculator</h1>
     <form method="get" id="form" onload="updateResult()">
-        <fieldset>
-            <legend>Their...</legend>
+        <fieldset id="defenderFieldset">
+            <legend>Defender</legend>
 
-            <label for="resistanceInput">Resistance (or Ascendancy)</label>
-            <br>
-            <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResult()">
-            <output name="resistanceOutput" for="resistanceInput">1</output>
-            <br>
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="resistanceOutput" class="outputText">1</output>
+                </div>
+                <div class="itemDescription" title="Defender's Hegemony Resistance, or Ascendancy for rival Civilizations">
+                    <label for="resistanceInput">Resistance</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResult()">
+                </div>
+            </div>
             
-            <label for="nodeCountInput">Nodes in System</label>
-            <br>
-            <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="5" value="4" oninput="updateResult()">
-            <output name="nodeCountOutput">4</output>
-            <br>
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="nodeCountOutput" class="outputText">4</output>
+                </div>
+                <div class="itemDescription" title="Number of Nodes in Defending System (including Control Node)">
+                    <label for="nodeCountInput">Nodes</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="5" value="4" oninput="updateResult()">
+                </div>
+            </div>
 
-            <label for="theirModifier">Modifiers (from Advancements, etc.)</label>
-            <br>
-            <input type="number" name="theirModifier" id="theirModifier" min="0" value="0" oninput="updateResult()">
-            
-            <hr>
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="defenderModifierOutput" class="outputText">0</output>
+                </div>
+                <div class="itemDescription" title="Any defensive Hegemony roll modifiers from Advancements or other sources">
+                    <label for="defenderModifier">Modifiers</label>
+                </div>
+                <div class="itemInput">
+                    <input type="number" name="defenderModifier" id="defenderModifier" min="0" value="0" oninput="updateResult()">
+                </div>
+            </div>
 
-            <label for="baseRoll">Anyone would need:</label>
-            <output name="baseRoll">6</output>+
-
-            (probability: <output name="baseOdds">1/6, 17%</output>)
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="baseRoll">6</output>+
+                </div>
+                <div class="itemDescription" title="Minimum roll required by an initiator with no bonuses (and zero Ascendancy)">
+                    Base success roll
+                </div>
+                <div class="itemInput">
+                    <em>(probability: <output name="baseOdds">1/6, 17%</output>)</em>
+                </div>
+            </div>
         </fieldset>
-        <fieldset>
-            <legend>My...</legend>
+        <fieldset id="initiatorFieldset">
+            <legend>Initiator</legend>
 
-            <label for="ascendancyInput">Ascendancy</label>
-            <br>
-            <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateResult()">
-            <output name="ascendancyOutput">1</output>
-            <br>
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="ascendancyOutput" class="outputText">1</output>
+                </div>
+                <div class="itemDescription" title="Initiator's Ascendancy">
+                    <label for="ascendancyInput">Ascendancy</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateResult()">
+                </div>
+            </div>
 
-            <label for="myModifier">Modifiers (from Advancements, etc.)</label>
-            <br>
-            <input type="number" name="myModifier" id="myModifier" min="0" value="0" oninput="updateResult()">
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="initiatorModifierOutput" class="outputText">0</output>
+                </div>
+                <div class="itemDescription" title="Any offensive hegemony roll modifiers from Advancements or other sources">
+                    <label for="initiatorModifier">Modifiers</label>
+                </div>
+                <div class="itemInput">
+                    <input type="number" name="initiatorModifier" id="initiatorModifier" min="0" value="0" oninput="updateResult()">
+                </div>
+            </div>
             
-            <hr>
-            
-            <label for="bonus">My bonuses:</label>
-            +<output name="bonus" for="ascendancyInput modifier">1</output>
+            <div class="formItem">
+                <div class="itemOutput">
+                    +<output name="bonus" for="ascendancyInput modifier">1</output>
+                </div>
+                <div class="itemDescription" title="Total hegemony roll bonuses">
+                    Roll bonuses
+                </div>
+                <div class="itemInput">
+                </div>
+            </div>
         </fieldset>
-        <fieldset>
-            <legend>Success roll</legend>
-            <output name="finalRoll">5</output>+
-            
-            (probability: <output name="finalOdds">1/3, 33%</output>)
+        <fieldset id="successRollFieldset">
+            <legend title="Minimum roll required to achieve cultural hegemony">Success roll</legend>
+
+            <div class="formItem">
+                <div class="itemOutput">
+                    <output name="finalRoll">5</output>+
+                </div>
+                <div class="itemDescription">
+                    <span>Probability: <output name="finalOdds">1/3, 33%</output></span>
+                </div>
+                <div class="itemInput">
+                    <em><output name="expectedAttempts">(expected attempts: 3)</output></em>
+                </div>
+            </div>
         </fieldset>
     </form>
 </body>
