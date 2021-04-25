@@ -1,7 +1,18 @@
 html {
     font-family: helvetica;
-    font-size: max(16px, 5.5vmin);
     white-space: nowrap;
+}
+
+@media (orientation: portrait) {
+    html {
+        font-size: max(16px, min(5.5vw, 2.75vh));
+    }
+}
+
+@media (orientation: landscape) {
+    html {
+        font-size: max(16px, min(2.75vw, 5.5vh));
+    }
 }
 
 body {
