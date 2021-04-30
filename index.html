@@ -41,10 +41,11 @@
                     <output name="defenderModifierOutput" class="outputText">0</output>
                 </div>
                 <div class="itemDescription" title="Any defensive Hegemony roll modifiers from Advancements or other sources">
-                    <label for="defenderModifier">Modifiers</label>
+                    Modifiers
                 </div>
                 <div class="itemInput">
-                    <input type="number" name="defenderModifier" id="defenderModifier" min="0" value="0" oninput="updateResult()">
+                    <input type="button" id="defenderModifierDecrement" value="-" onclick="updateModifier('defender', '--')">
+                    <input type="button" id="defenderModifierIncrement" value="+" onclick="updateModifier('defender', '++')">
                 </div>
             </div>
 
@@ -83,7 +84,8 @@
                     <label for="initiatorModifier">Modifiers</label>
                 </div>
                 <div class="itemInput">
-                    <input type="number" name="initiatorModifier" id="initiatorModifier" min="0" value="0" oninput="updateResult()">
+                    <input type="button" id="initiatorModifierDecrement" value="-" onclick="updateModifier('initiator', '--')">
+                    <input type="button" id="initiatorModifierIncrement" value="+" onclick="updateModifier('initiator', '++')">
                 </div>
             </div>
             

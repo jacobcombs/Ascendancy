@@ -2,9 +2,36 @@ var form = document.getElementById("form");
 
 var resistance;
 var nodeCount;
-var defenderModifier;
+var defenderModifier = 0;
 var ascendancy;
-var initiatorModifier;
+var initiatorModifier = 0;
+
+function updateModifier(which, how)
+{
+    switch (which + how)
+    {
+        case "defender--":
+            defenderModifier = clamp(defenderModifier - 1, 0, 6);
+            break;
+        case "defender++":
+            defenderModifier = clamp(defenderModifier + 1, 0, 6);
+            break;
+        case "initiator--":
+            initiatorModifier = clamp(initiatorModifier - 1, 0, 6);
+            break;
+        case "initiator++":
+            initiatorModifier = clamp(initiatorModifier + 1, 0, 6);
+            break;
+        default:
+            break;
+    }
+    updateResult();
+}
+
+function clamp(value, min, max)
+{
+    return Math.min(Math.max(value, min), max);
+}
 
 function updateResult()
 {
@@ -16,9 +43,7 @@ function getGlobalValuesFromInputs()
 {
     resistance = parseInt(document.getElementById("resistanceInput").value);
     nodeCount = parseInt(document.getElementById("nodeCountInput").value);
-    defenderModifier = parseInt(document.getElementById("defenderModifier").value);
     ascendancy = parseInt(document.getElementById("ascendancyInput").value);
-    initiatorModifier = parseInt(document.getElementById("initiatorModifier").value);
 }
 
 function updateOutputs()
