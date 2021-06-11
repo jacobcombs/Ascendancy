@@ -6,6 +6,11 @@ var defenderModifier = 0;
 var ascendancy;
 var initiatorModifier = 0;
 
+function clamp(value, min, max)
+{
+    return Math.min(Math.max(value, min), max);
+}
+
 function updateModifier(which, how)
 {
     switch (which + how)
@@ -26,11 +31,6 @@ function updateModifier(which, how)
             break;
     }
     updateResult();
-}
-
-function clamp(value, min, max)
-{
-    return Math.min(Math.max(value, min), max);
 }
 
 function updateResult()
