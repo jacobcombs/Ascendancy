@@ -1,4 +1,4 @@
-var form = document.getElementById("form");
+var form = document.getElementsByTagName("form")[0]
 
 var resistance;
 var nodeCount;

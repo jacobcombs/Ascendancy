@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cultural Hegemony Calculator</title>
+</head>
+<body>
+    <form method="get" onload="updateResult()">
+        <fieldset id="defenderFieldset">
+            <legend>Defender</legend>
+
+            <div class="formItem">
+                <div class="connectionSymbol"></div>
+                <div class="itemOutput">
+                    <output name="resistanceOutput" class="outputText">1</output>
+                </div>
+                <div class="itemDescription" title="Defender's Hegemony Resistance, or Ascendancy for rival Civilizations">
+                    <label for="resistanceInput">Resistance</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="resistanceInput" id="resistanceInput" max="5" value="1" oninput="updateResult()">
+                </div>
+            </div>
+            
+            <div class="formItem">
+                <div class="connectionSymbol">+</div>
+                <div class="itemOutput">
+                    <output name="nodeCountOutput" class="outputText">4</output>
+                </div>
+                <div class="itemDescription" title="Number of Nodes in Defending System (including Control Node)">
+                    <label for="nodeCountInput">Nodes</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="nodeCountInput" id="nodeCountInput" min="1" max="5" value="4" oninput="updateResult()">
+                </div>
+            </div>
+
+            <div class="formItem">
+                <div class="connectionSymbol">+</div>
+                <div class="itemOutput">
+                    <output name="defenderModifierOutput" class="outputText">0</output>
+                </div>
+                <div class="itemDescription" title="Any defensive Hegemony roll modifiers from Advancements or other sources">
+                    Modifiers
+                </div>
+                <div class="itemInput">
+                    <input type="button" id="defenderModifierDecrement" value="-" onclick="updateModifier('defender', '--')">
+                    <input type="button" id="defenderModifierIncrement" value="+" onclick="updateModifier('defender', '++')">
+                </div>
+            </div>
+
+            <div class="formItem">
+                <div class="connectionSymbol">=</div>
+                <div class="itemOutput">
+                    <output name="baseRoll">6</output>+
+                </div>
+                <div class="itemDescription" title="Minimum roll required by an initiator with no bonuses (and zero Ascendancy)">
+                    Base success roll
+                </div>
+                <div class="itemInput">
+                    <em>(probability: <output name="baseOdds">1/6, 17%</output>)</em>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="initiatorFieldset">
+            <legend>Initiator</legend>
+
+            <div class="formItem">
+                <div class="connectionSymbol"></div>
+                <div class="itemOutput">
+                    <output name="ascendancyOutput" class="outputText">1</output>
+                </div>
+                <div class="itemDescription" title="Initiator's Ascendancy">
+                    <label for="ascendancyInput">Ascendancy</label>
+                </div>
+                <div class="itemInput">
+                    <input type="range" name="ascendancyInput" id="ascendancyInput" max="5" value="1" oninput="updateResult()">
+                </div>
+            </div>
+
+            <div class="formItem">
+                <div class="connectionSymbol">+</div>
+                <div class="itemOutput">
+                    <output name="initiatorModifierOutput" class="outputText">0</output>
+                </div>
+                <div class="itemDescription" title="Any offensive hegemony roll modifiers from Advancements or other sources">
+                    <label for="initiatorModifier">Modifiers</label>
+                </div>
+                <div class="itemInput">
+                    <input type="button" id="initiatorModifierDecrement" value="-" onclick="updateModifier('initiator', '--')">
+                    <input type="button" id="initiatorModifierIncrement" value="+" onclick="updateModifier('initiator', '++')">
+                </div>
+            </div>
+            
+            <div class="formItem">
+                <div class="connectionSymbol">=</div>
+                <div class="itemOutput">
+                    +<output name="bonus" for="ascendancyInput modifier">1</output>
+                </div>
+                <div class="itemDescription" title="Total hegemony roll bonuses">
+                    Roll bonuses
+                </div>
+                <div class="itemInput">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="successRollFieldset">
+            <legend title="Minimum roll required to achieve cultural hegemony">Success roll</legend>
+
+            <div class="formItem">
+                <div class="connectionSymbol"></div>
+                <div class="itemOutput">
+                    <output name="finalRoll">5</output>+
+                </div>
+                <div class="itemDescription">
+                    <span>Probability: <output name="finalOdds">1/3, 33%</output></span>
+                </div>
+                <div class="itemInput">
+                    <em><output name="expectedAttempts">(expected attempts: 3)</output></em>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</body>
+<script src="main.js"></script>
+</html>
