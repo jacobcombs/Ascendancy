@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="styles.css">
     <title>Planetary Invasion Planner</title>
 </head>
 <body>
-    Not yet implemented
+    <form method="get">
+        <fieldset id="attackerFieldset">
+            <legend>Attacker</legend>
+
+            <p>
+                <input id="ships" type="number" min="0" max="30"/>
+                <label for="ships">Ships</label>
+            </p>
+            <p>
+                <input id="attackerHit" type="number" min="0" max="7"/>
+                <label for="attackerHit">Hit roll</label>
+            </p>
+        </fieldset>
+
+        <fieldset id="defenderFieldset">
+            <legend>Defender</legend>
+
+            <p>
+                <input id="nodes" type="number" min="0" max="5"/>
+                <label for="nodes">Nodes</label>
+            </p>
+            <p>
+                <input id="defenderHit" type="number" min="0" max="7"/>
+                <label for="defenderHit">Hit roll</label>
+            </p>
+        </fieldset>
+
+        <p>
+            Expected attacker first-round losses:
+            <output id="attackerLosses"></output>
+        </p>
+        <p>
+            Expected defender first-round losses:
+            <output id="defenderLosses"></output>
+        </p>
+    </form>
 </body>
 <script src="main.js"></script>
 </html>
